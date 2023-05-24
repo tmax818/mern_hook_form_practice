@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import useInputState from "./hooks/useInputState";
+import Input from "./components/Input";
 
 function App() {
+  const [firstName, setFirstName, resetFirstName] = useInputState("")
+  const [lastName, setLastName, resetLastName] = useInputState("")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <fieldset >
+
+        <Input title={"first Name"} value={firstName} setValue={setFirstName}/>
+        <Input title={"last Name"} value={lastName} setValue={setLastName}/>
+      <input type="submit" value="test" onClick={() => {resetFirstName(); resetLastName()}} />
+
+      first Name: {firstName}
+      last Name: {lastName}
+    </fieldset>
   );
 }
 
